@@ -1,11 +1,17 @@
 # one-stop-traveler-server
 One stop traveler backend
 
-#To start backend server
-go to /one-stop-traveler folder
-Run command: node index.js
+# To start backend server
+go to folder
+    
+      /one-stop-traveler 
+Run command: 
+
+    node index.js
 
 
-Default port is 3001.
+Default port for node server is 3001.
 
-URL to fetch features from MongoDB: http://localhost:3001/getfeatureinfo
+URL to fetch features from MongoDB: 
+
+    http://localhost:3001/getfeatureinfo
