@@ -19,5 +19,4 @@ mongoose.set("debug", true);
       console.log("Something went wrong! MongoDB disconnected - cmpe295b");
     });;
 
-
 module.exports = {mongoose};

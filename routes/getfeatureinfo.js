@@ -2,11 +2,11 @@ const express = require('express')
 const router = express.Router()
 var Features = require("../models/features");
 
-router.get("/getfeatureinfo", function(req, res) {
+router.get("/getfeatureinfo/:star", function(req, res) {
     console.log("Inside get features info request:");
-    console.log("Request : ", req.body);
-
-    Features.findOne({city: "Las Vegas" }, function(err, data){
+    console.log("Parameter : ", req.params.star);
+    let findStar = req.params.star;
+    Features.findOne({stars: findStar}, function(err, data){
         if(err){
         console.log(err);
         throw err

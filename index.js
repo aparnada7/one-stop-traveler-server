@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
 });
 
 //HTTP calls to routes
-app.get('/getfeatureinfo', getFeatureInfo)
+app.get('/getfeatureinfo/:star', getFeatureInfo)
 
 
 app.listen(3001);
