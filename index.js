@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 
 //Import the established routes
 const getFeatureInfo = require('./routes/getfeatureinfo')
-
+const search = require('./routes/search')
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
@@ -54,6 +54,7 @@ app.use(function(req, res, next) {
 
 //HTTP calls to routes
 app.get('/getfeatureinfo/:star', getFeatureInfo)
+app.post('/search', search)
 
 
 app.listen(3001);
