@@ -4,7 +4,7 @@ One stop traveler backend
 # To start backend server
 go to folder
     
-      /one-stop-traveler 
+      /one-stop-traveler-server 
 Run command: 
 
     node index.js
