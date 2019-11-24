@@ -20,6 +20,7 @@
     "mongoose": "^5.7.3",
     "morgan": "^1.9.1",
     "mysql": "^2.17.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "yelp-fusion": "^3.0.0"
   }
 }
