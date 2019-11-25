@@ -7,6 +7,7 @@ const apiKey = 'qfjf-vrfja9R-Jp2nYuzfAShPORGeXSO8eBsxsOLk8a8ojbkx3mIRH0v9rj3AsqW
 const client = yelp.client(apiKey);
 
 var Features = require("../models/features");
+var Business = require("../models/business");
 
 
 router.post("/search", function(req, res) {
@@ -27,19 +28,32 @@ router.post("/search", function(req, res) {
     //   Features.findOne({$and: [{"stars":{$gte: 4.5} }, {"city":city}, {} ]}, function(err, data){
     //Sample Mongo query:
     // db.features.find({$and: [{"stars":{$gte: 4.5} }, {"city":"Scottsdale"}, {"name": {$regex:"Shop", $options:"$i"}   }]});
-    Features.findOne({$and: [{"stars":{$gte: 4.5} }, {"city":city}, {"name": {$regex:preference1, $options:"$i"}   }]}, function(err, data){
+    Business.findOne({$and: [{"stars":{$gte: 4.5} }, {"city":city}, {"name": {$regex:preference1, $options:"$i"}   }]}, function(err, data){
         if(err){
         console.log(err);
         res.send({})
         }
         else{
             console.log("Data fetched from features collection:")
+            //console.log(data.attributes)
+            if (data != null){
+                var latitude = data.latitude
+                var longitude = data.longitude
+                var name = data.name
+                var stars = data.stars
+                console.log('lat is ', latitude)
+            }else{
+                var latitude = 37.786882
+                var longitude = -122.399972
+                var name = 'Leo Stan'
+                var stars = 5
+            }
             //Call API here
             const searchRequest = {
                 term:req.body.preference2,
                 location: req.body.city,
-                latitude: 37.786882, //data.latitude
-                longitude:-122.399972, //data.longitude
+                latitude: latitude, //data.latitude, //37.786882, //data.latitude
+                longitude: longitude, //data.longitude,//-122.399972, //data.longitude
                 radius: proximity,
                 limit: 5
             };
@@ -49,8 +63,8 @@ router.post("/search", function(req, res) {
                 let firstResult = response.jsonBody.businesses;
                 //console.log('length ', firstResult.length)
                 for (var i = 0; i < firstResult.length; i++){
-                    firstResult[i]['pref1'] = data.name
-                    firstResult[i]['pref1Stars'] = data.stars
+                    firstResult[i]['pref1'] = name
+                    firstResult[i]['pref1Stars'] = stars
                     firstResult[i]['pref1Cat'] = preference1
                     //console.log(firstResult)
                 }
