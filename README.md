@@ -7,7 +7,7 @@ go to folder
       /one-stop-traveler-server 
 Run command: 
 
-    node index.js
+    nodemon index.js
 
 
 Default port for node server is 3001.
