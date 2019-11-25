@@ -19,4 +19,4 @@ var Business = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('newfeatures',Business, 'newfeatures')
+module.exports = mongoose.model('business',Business, 'business')
